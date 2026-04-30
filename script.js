@@ -697,7 +697,16 @@ canvas.addEventListener('touchend', () => {
   ptMouse.x = -4000; ptMouse.y = -4000; ptMouse.vx = 0; ptMouse.vy = 0;
 });
 
-window.addEventListener('resize', ptInit);
+// Only reinit on width change — mobile scroll hides browser chrome and fires
+// resize with height-only change, which incorrectly resets ptFlyTriggered
+let ptLastW = window.innerWidth;
+window.addEventListener('resize', () => {
+  if (Math.abs(window.innerWidth - ptLastW) < 2) return; // height-only change → skip
+  ptLastW = window.innerWidth;
+  const wasTriggered = ptFlyTriggered;
+  ptInit();
+  if (wasTriggered) setTimeout(ptTriggerFlyIn, 50); // restore state instantly
+});
 
 ptInit();
 ptTick();
