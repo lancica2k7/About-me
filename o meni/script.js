@@ -955,7 +955,7 @@ if (contactForm) {
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Pošiljam...';
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+      const res = await fetch('https://formspree.io/f/xeenqayy', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(this)
