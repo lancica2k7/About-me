@@ -9,7 +9,7 @@ const translations = {
     "hero.eyebrow": "Pozdravljeni, jaz sem",
     "hero.prefix": "Sem ",
     "hero.desc": "Strasten spletni razvijalec, ki gradi impresivne digitalne izkušnje.<br>Vsak piksel šteje. Vsaka animacija govori.",
-    "hero.cta1": "Poglej moje delo", "hero.cta2": "Kontaktiraj me", "hero.cv": "Prenesi CV",
+    "hero.cta1": "Poglej moje delo", "hero.cta2": "Kontaktiraj me",
     "hero.scroll": "Scrollaj navzdol",
     "about.title": 'Kdo sem <span class="gradient-text animated-gradient">jaz?</span>',
     "about.bio1": 'Imam <strong>19 let</strong> in sem strasten <strong>spletni razvijalec</strong>, ki naredi vse, da impresionira s svojimi spletnimi stranmi. Poleg programiranja igram <strong>košarko</strong> za zabavo — na igrišču in pred zaslonom vedno dam vse od sebe.',
@@ -45,7 +45,6 @@ const translations = {
     "proj.b2": "Glassmorphism UI, live data charts, dark/light mode, mobilno prilagojeno.",
     "proj.b3": "Osebni projekt — ker košarka in programiranje sta moji dve strasti.",
     "proj.b4": "Čisti vanilla kod, particle system, 3D kartice, typewriter efekt in še veliko več.",
-    "proj.view": "Oglej si", "proj.view2": "Oglej si", "proj.view3": "Oglej si", "proj.view4": "Oglej si",
     "proj.more": "Želiš videti več?", "proj.github": "Poglej GitHub",
     "test.title": 'Kaj pravijo <span class="gradient-text animated-gradient">stranke</span>',
     "test.q1": '"Lan je naredil odlično spletno stran za moj posel. Hitro, profesionalno in kreativno."',
@@ -53,7 +52,7 @@ const translations = {
     "test.q3": '"Odziven, zanesljiv in kreativen. Priporočam vsem!"',
     "test.r1": "Podjetnik", "test.r2": "Fotografinja", "test.r3": "Startup ustanovitelj",
     "cur.learning": 'Trenutno se učim: <strong>Next.js, TypeScript, Framer Motion</strong>',
-    "cur.available": "Na voljo za freelance projekte od marca 2026",
+    "cur.available": "Na voljo za freelance projekte ✓",
     "contact.title": 'Pišite <span class="gradient-text animated-gradient">mi</span>',
     "contact.desc": "Imate projekt? Idejo? Ali pa samo želite poklepetati o razvoju spletnih strani? Vedno sem dostopen — odgovorim hitro.",
     "contact.phone": "Telefon", "contact.location": "Lokacija", "contact.loc_val": "Slovenija",
@@ -72,7 +71,7 @@ const translations = {
     "hero.eyebrow": "Hello, I am",
     "hero.prefix": "I'm a ",
     "hero.desc": "A passionate web developer building impressive digital experiences.<br>Every pixel counts. Every animation speaks.",
-    "hero.cta1": "See my work", "hero.cta2": "Contact me", "hero.cv": "Download CV",
+    "hero.cta1": "See my work", "hero.cta2": "Contact me",
     "hero.scroll": "Scroll down",
     "about.title": 'Who am <span class="gradient-text animated-gradient">I?</span>',
     "about.bio1": "I'm <strong>19 years old</strong> and a passionate <strong>web developer</strong> who does everything to impress with my websites. Besides coding, I play <strong>basketball</strong> for fun — on the court and in front of the screen, I always give my best.",
@@ -108,7 +107,6 @@ const translations = {
     "proj.b2": "Glassmorphism UI, live data charts, dark/light mode, mobile-friendly.",
     "proj.b3": "Personal project — because basketball and programming are my two passions.",
     "proj.b4": "Pure vanilla code, particle system, 3D cards, typewriter effect and much more.",
-    "proj.view": "View", "proj.view2": "View", "proj.view3": "View", "proj.view4": "View",
     "proj.more": "Want to see more?", "proj.github": "View GitHub",
     "test.title": 'What <span class="gradient-text animated-gradient">clients</span> say',
     "test.q1": '"Lan made an excellent website for my business. Fast, professional and creative."',
@@ -116,7 +114,7 @@ const translations = {
     "test.q3": '"Responsive, reliable and creative. I recommend to everyone!"',
     "test.r1": "Entrepreneur", "test.r2": "Photographer", "test.r3": "Startup founder",
     "cur.learning": "Currently learning: <strong>Next.js, TypeScript, Framer Motion</strong>",
-    "cur.available": "Available for freelance projects from March 2026",
+    "cur.available": "Available for freelance projects ✓",
     "contact.title": 'Get in <span class="gradient-text animated-gradient">touch</span>',
     "contact.desc": "Have a project? An idea? Or just want to chat about web development? I'm always available — I reply quickly.",
     "contact.phone": "Phone", "contact.location": "Location", "contact.loc_val": "Slovenia",
@@ -697,16 +695,23 @@ canvas.addEventListener('touchend', () => {
   ptMouse.x = -4000; ptMouse.y = -4000; ptMouse.vx = 0; ptMouse.vy = 0;
 });
 
-// Only reinit on width change — mobile scroll hides browser chrome and fires
-// resize with height-only change, which incorrectly resets ptFlyTriggered
 let ptLastW = window.innerWidth;
-window.addEventListener('resize', () => {
-  if (Math.abs(window.innerWidth - ptLastW) < 2) return; // height-only change → skip
-  ptLastW = window.innerWidth;
+
+function ptHandleResize() {
+  const newW = window.innerWidth;
+  if (Math.abs(newW - ptLastW) < 2) return;
+  ptLastW = newW;
   const wasTriggered = ptFlyTriggered;
   ptInit();
-  if (wasTriggered) setTimeout(ptTriggerFlyIn, 50); // restore state instantly
-});
+  if (wasTriggered) setTimeout(ptTriggerFlyIn, 50);
+}
+
+// visualViewport fires only for real layout changes on iOS Safari
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', ptHandleResize);
+} else {
+  window.addEventListener('resize', ptHandleResize);
+}
 
 ptInit();
 ptTick();
@@ -772,6 +777,15 @@ const skillObserver = new IntersectionObserver((entries) => {
 
 const skillsSection = document.getElementById('skills');
 if (skillsSection) skillObserver.observe(skillsSection);
+
+if (isTouch()) {
+  document.querySelectorAll('.skill-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.add('skill-touched');
+      setTimeout(() => item.classList.remove('skill-touched'), 800);
+    });
+  });
+}
 
 /* ============================================================
    COUNTER ANIMATION
@@ -934,26 +948,45 @@ if (avatarBadge) {
 ============================================================ */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('button[type="submit"]');
     btn.classList.add('loading');
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Pošiljam...';
-    setTimeout(() => {
-      document.getElementById('formSuccess').classList.add('show');
-      this.reset();
-      // Restore button after 4s so user can send another message
+
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(this)
+      });
+      if (res.ok) {
+        document.getElementById('formSuccess').classList.add('show');
+        this.reset();
+        setTimeout(() => {
+          document.getElementById('formSuccess').classList.remove('show');
+          btn.classList.remove('loading');
+          btn.innerHTML = '<span data-i18n="contact.send">' +
+            (translations[currentLang]['contact.send'] || 'Pošlji sporočilo') +
+            '</span><i class="fa-solid fa-paper-plane"></i>';
+        }, 4000);
+      } else {
+        throw new Error('send failed');
+      }
+    } catch {
+      btn.classList.remove('loading');
+      btn.innerHTML = '<span>Napaka — poskusi znova</span>';
       setTimeout(() => {
-        document.getElementById('formSuccess').classList.remove('show');
-        btn.classList.remove('loading');
-        btn.innerHTML = '<span data-i18n="contact.send">' + (translations[currentLang]['contact.send'] || 'Pošlji sporočilo') + '</span><i class="fa-solid fa-paper-plane"></i>';
-      }, 4000);
-    }, 2000);
+        btn.innerHTML = '<span data-i18n="contact.send">' +
+          (translations[currentLang]['contact.send'] || 'Pošlji sporočilo') +
+          '</span><i class="fa-solid fa-paper-plane"></i>';
+      }, 3000);
+    }
   });
 
   contactForm.querySelectorAll('.form-input').forEach(input => {
     input.addEventListener('focus', () => input.closest('.form-group').classList.add('focused'));
-    input.addEventListener('blur', () => input.closest('.form-group').classList.remove('focused'));
+    input.addEventListener('blur',  () => input.closest('.form-group').classList.remove('focused'));
   });
 }
 
@@ -1007,9 +1040,8 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
-    // Update hint text for touch devices
-    const hint = card.querySelector('.flip-hint');
-    if (hint) hint.textContent = 'Tapni za več';
+    const hintSpan = card.querySelector('.flip-hint-text');
+    if (hintSpan) hintSpan.textContent = 'Tapni za več';
   }
 });
 
