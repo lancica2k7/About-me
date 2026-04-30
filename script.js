@@ -680,6 +680,23 @@ heroSection.addEventListener('mousemove', e => {
 heroSection.addEventListener('mouseleave', () => {
   ptMouse.x = -4000; ptMouse.y = -4000; ptMouse.vx = 0; ptMouse.vy = 0;
 });
+
+// Touch support for particle canvas
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const r = canvas.getBoundingClientRect();
+  const t = e.touches[0];
+  const nx = t.clientX - r.left;
+  const ny = t.clientY - r.top;
+  ptMouse.vx = nx - ptMouse.x;
+  ptMouse.vy = ny - ptMouse.y;
+  ptMouse.x  = nx;
+  ptMouse.y  = ny;
+}, { passive: false });
+canvas.addEventListener('touchend', () => {
+  ptMouse.x = -4000; ptMouse.y = -4000; ptMouse.vx = 0; ptMouse.vy = 0;
+});
+
 window.addEventListener('resize', ptInit);
 
 ptInit();
@@ -888,14 +905,19 @@ let badgeHoverTimeout;
 
 if (avatarBadge) {
   avatarBadge.addEventListener('mouseenter', () => {
-    badgeHoverTimeout = setTimeout(() => {
-      badgeTooltip.classList.add('show');
-    }, 2000);
+    badgeHoverTimeout = setTimeout(() => badgeTooltip.classList.add('show'), 2000);
   });
   avatarBadge.addEventListener('mouseleave', () => {
     clearTimeout(badgeHoverTimeout);
     badgeTooltip.classList.remove('show');
   });
+  // Touch: tap to toggle tooltip
+  avatarBadge.addEventListener('touchstart', e => {
+    e.preventDefault();
+    badgeTooltip.classList.toggle('show');
+    if (badgeTooltip.classList.contains('show'))
+      setTimeout(() => badgeTooltip.classList.remove('show'), 3000);
+  }, { passive: false });
 }
 
 /* ============================================================
@@ -927,72 +949,96 @@ if (contactForm) {
 }
 
 /* ============================================================
-   TILT EFFECTS
+   TOUCH DETECTION
 ============================================================ */
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateX = (y - rect.height / 2) / (rect.height / 2) * -6;
-    const rotateY = (x - rect.width / 2) / (rect.width / 2) * 6;
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-});
+const isTouch = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-document.querySelectorAll('.tilt-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateX = (y - rect.height / 2) / (rect.height / 2) * -4;
-    const rotateY = (x - rect.width / 2) / (rect.width / 2) * 4;
-    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    const glow = card.querySelector('.stat-glow');
-    if (glow) { glow.style.left = (x - 50) + 'px'; glow.style.top = (y - 50) + 'px'; }
+/* ============================================================
+   TILT EFFECTS (mouse only)
+============================================================ */
+if (!isTouch()) {
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height / 2) / (rect.height / 2) * -6;
+      const rotateY = (x - rect.width / 2) / (rect.width / 2) * 6;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
   });
-  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-});
+
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height / 2) / (rect.height / 2) * -4;
+      const rotateY = (x - rect.width / 2) / (rect.width / 2) * 4;
+      card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      const glow = card.querySelector('.stat-glow');
+      if (glow) { glow.style.left = (x - 50) + 'px'; glow.style.top = (y - 50) + 'px'; }
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+}
 
 document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const glow = card.querySelector('.card-glow');
-    if (glow) { glow.style.left = x - 100 + 'px'; glow.style.top = y - 100 + 'px'; }
-  });
+  if (!isTouch()) {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const glow = card.querySelector('.card-glow');
+      if (glow) { glow.style.left = x - 100 + 'px'; glow.style.top = y - 100 + 'px'; }
+    });
+  } else {
+    // Touch: tap to flip
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+    // Update hint text for touch devices
+    const hint = card.querySelector('.flip-hint');
+    if (hint) hint.textContent = 'Tapni za več';
+  }
 });
 
 /* ============================================================
-   MAGNETIC BUTTONS
+   MAGNETIC BUTTONS (mouse only)
 ============================================================ */
-document.querySelectorAll('.magnetic').forEach(btn => {
-  btn.addEventListener('mousemove', e => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+if (!isTouch()) {
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
-});
+}
 
 /* ============================================================
    RIPPLE EFFECT
 ============================================================ */
 document.querySelectorAll('.ripple-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    const rect = this.getBoundingClientRect();
+  const spawnRipple = (el, clientX, clientY) => {
+    const rect = el.getBoundingClientRect();
     const ripple = document.createElement('span');
     ripple.classList.add('ripple-effect');
     const size = Math.max(rect.width, rect.height);
     ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-    this.appendChild(ripple);
+    ripple.style.left = (clientX - rect.left - size / 2) + 'px';
+    ripple.style.top  = (clientY - rect.top  - size / 2) + 'px';
+    el.appendChild(ripple);
     setTimeout(() => ripple.remove(), 600);
-  });
+  };
+  btn.addEventListener('click', function(e) { spawnRipple(this, e.clientX, e.clientY); });
+  btn.addEventListener('touchstart', function(e) {
+    const t = e.touches[0];
+    spawnRipple(this, t.clientX, t.clientY);
+  }, { passive: true });
 });
 
 /* ============================================================

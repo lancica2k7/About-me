@@ -3187,45 +3187,121 @@ button:focus-visible {
     z-index: 999;
   }
 
-  [data-theme="light"] .nav-links {
-    background: rgba(245,247,251,0.97);
-  }
+  [data-theme="light"] .nav-links { background: rgba(245,247,251,0.97); }
 
   .nav-links.open { right: 0; }
   .nav-link { padding: 1rem 0; font-size: 1.1rem; border-radius: 0; }
   .nav-toggle { display: flex; }
 
-  .section { padding: 80px 0; }
-  .project-card { height: 340px; }
-  .about-stats { grid-template-columns: repeat(3, 1fr); }
+  .section { padding: 70px 0; }
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+
+  /* Hero */
+  .hero-code-float { display: none; }
+  .hero-pulse-ring { display: none; }
   .hero-cta { flex-direction: column; align-items: center; }
   .hero-cta .btn { width: 100%; justify-content: center; max-width: 280px; }
-  .timeline-steps { grid-template-columns: 1fr; gap: 2rem; }
   .hero-floaters { display: none; }
-  .funfacts-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+  .hero-desc { font-size: 1rem; }
+  .particle-canvas { height: clamp(100px, 18vw, 160px); }
 
+  /* About */
+  .about-stats { grid-template-columns: repeat(3, 1fr); }
+  .avatar-text-ring { width: 270px; height: 270px; margin-left: -135px; margin-top: -135px; }
+  .avatar-orbit { width: 270px; height: 270px; }
+
+  /* Projects — tap to flip */
+  .project-card { height: 320px; cursor: pointer; }
+  .project-card.flipped .card-inner { transform: rotateY(180deg); }
+
+  /* Skills */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* Testimonials */
+  .testimonial-card { padding: 1.5rem; }
+  .testimonial-text { font-size: 1rem; }
+  .testimonial-carousel { max-width: 100%; }
+
+  /* Marquee */
+  .marquee-fade-left, .marquee-fade-right { width: 60px; }
+
+  /* Footer */
+  .footer-logo { font-size: clamp(1.4rem, 5vw, 2rem); }
+  .footer-sitemap { gap: 0.75rem; }
+  .footer-sitemap a { font-size: 0.8rem; }
+
+  /* Cursor — hide on touch */
   .cursor-dot, .cursor-ring { display: none; }
   html { cursor: auto; }
   a, button { cursor: pointer; }
+  input, textarea, select { cursor: auto !important; }
   .back-to-top, .sound-toggle { cursor: pointer; }
 
-  /* Show mobile sticky CTA */
+  /* UI elements */
   .mobile-sticky-cta { display: flex; }
-  .sound-toggle { bottom: auto; top: auto; left: 1rem; bottom: 1rem; width: 36px; height: 36px; font-size: 0.8rem; }
+  .sound-toggle { left: 1rem; bottom: 1rem; width: 36px; height: 36px; font-size: 0.8rem; }
   .back-to-top { bottom: 1rem; right: 1rem; width: 42px; height: 42px; }
-
   .lang-switch { font-size: 0.7rem; padding: 0.25rem 0.5rem; }
   .theme-toggle { width: 34px; height: 34px; font-size: 0.85rem; }
   .nav-scroll-pct { display: none; }
+
+  /* Timeline */
+  .timeline-steps { grid-template-columns: 1fr; gap: 2rem; }
+  .funfacts-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+
+  /* Services */
+  .services-grid { max-width: 100%; }
+  .service-card { padding: 2rem 1.5rem; }
+
+  /* Contact */
+  .contact-grid { gap: 2rem; }
 }
 
 @media (max-width: 480px) {
   .container { padding: 0 1.25rem; }
-  .contact-form { padding: 1.75rem 1.5rem; }
-  .about-stats { grid-template-columns: 1fr; max-width: 220px; }
-  .hero-name { font-size: clamp(2.5rem, 12vw, 4rem); }
-  .footer-sitemap { gap: 0.75rem; }
-  .footer-sitemap a { font-size: 0.75rem; }
+  .section { padding: 55px 0; }
+  .contact-form { padding: 1.5rem 1.25rem; }
+
+  /* About avatar — scale down */
+  .avatar-wrapper { width: 200px; height: 200px; }
+  .avatar-text-ring { display: none; }
+  .avatar-orbit { width: 220px; height: 220px; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+
+  /* Project cards */
+  .project-card { height: 280px; }
+  .projects-grid { gap: 1rem; }
+
+  /* Fun facts */
+  .funfacts-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+  .funfact-number { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .funfact-value { font-size: 1.1rem; }
+
+  /* Typography */
+  .hero-name { font-size: clamp(2rem, 11vw, 3.5rem); }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 2px; }
+  .section-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+
+  /* Testimonials */
+  .testimonial-card { padding: 1.25rem; }
+
+  /* Footer */
+  .footer-sitemap { gap: 0.5rem; }
+  .footer-sitemap a { font-size: 0.72rem; }
+  .footer-logo { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+
+  /* Marquee */
+  .marquee-fade-left, .marquee-fade-right { width: 40px; }
+  .marquee-item { font-size: 0.9rem; }
+
+  /* Scroll indicator — hide on small phones */
+  .scroll-indicator { display: none; }
+
+  /* Service icons */
+  .service-icon { width: 56px; height: 56px; font-size: 1.4rem; }
+
+  /* Buttons */
+  .btn { padding: 0.8rem 1.6rem; font-size: 0.9rem; }
 }
 
 /* Landscape phone handling */
