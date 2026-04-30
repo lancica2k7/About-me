@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="sl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lan Čiča — 19-letni spletni razvijalec iz Slovenije. Gradim moderne, hitre in vizualno impresivne spletne strani." />
+  <meta name="keywords" content="Lan Čiča, spletni razvijalec, web developer, Slovenija, portfolio, UI/UX dizajn" />
+  <meta name="author" content="Lan Čiča" />
+  <meta property="og:title" content="Lan Čiča — Spletni razvijalec iz Slovenije" />
+  <meta property="og:description" content="Strasten spletni razvijalec, ki gradi impresivne digitalne izkušnje." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Lan Čiča — Spletni razvijalec iz Slovenije</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23cc0000'/><stop offset='100%25' stop-color='%238b0000'/></linearGradient></defs><text y='80' x='5' font-size='72' font-family='Arial,sans-serif' font-weight='900' fill='url(%23g)'>LC</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Skip to content (accessibility) -->
+  <a href="#main-content" class="skip-link">Preskoči na vsebino</a>
+
+  <svg class="svg-defs" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+  </svg>
+  <div class="noise-overlay"></div>
+
+  <!-- Page Loader / LC Intro -->
+  <div class="page-overlay" id="pageOverlay">
+    <div class="lc-grid"></div>
+    <div class="lc-orb lc-orb-1"></div>
+    <div class="lc-orb lc-orb-2"></div>
+    <div class="lc-orb lc-orb-3"></div>
+    <div class="lc-particle" style="--px:8vw;--py:12vh;--pd:0.4s;--pc:#a855f7;--ps:5px"></div>
+    <div class="lc-particle" style="--px:27vw;--py:8vh;--pd:0.7s;--pc:#06b6d4;--ps:3px"></div>
+    <div class="lc-particle" style="--px:70vw;--py:15vh;--pd:0.5s;--pc:#6366f1;--ps:4px"></div>
+    <div class="lc-particle" style="--px:90vw;--py:9vh;--pd:1.0s;--pc:#a855f7;--ps:5px"></div>
+    <div class="lc-particle" style="--px:5vw;--py:80vh;--pd:0.8s;--pc:#06b6d4;--ps:3px"></div>
+    <div class="lc-particle" style="--px:15vw;--py:70vh;--pd:1.3s;--pc:#a855f7;--ps:6px"></div>
+    <div class="lc-particle" style="--px:82vw;--py:78vh;--pd:0.6s;--pc:#6366f1;--ps:4px"></div>
+    <div class="lc-particle" style="--px:93vw;--py:62vh;--pd:1.2s;--pc:#06b6d4;--ps:3px"></div>
+    <div class="lc-particle" style="--px:47vw;--py:4vh;--pd:1.6s;--pc:#a855f7;--ps:5px"></div>
+    <div class="lc-particle" style="--px:58vw;--py:88vh;--pd:1.4s;--pc:#06b6d4;--ps:4px"></div>
+    <div class="lc-particle" style="--px:35vw;--py:91vh;--pd:1.9s;--pc:#6366f1;--ps:3px"></div>
+    <div class="lc-particle" style="--px:74vw;--py:93vh;--pd:2.2s;--pc:#a855f7;--ps:5px"></div>
+    <div class="lc-center">
+      <div class="lc-logo">
+        <span class="lc-L">L</span><span class="lc-C">C</span><span class="lc-dot">.</span>
+      </div>
+      <div class="lc-line"></div>
+      <div class="lc-name">
+        <span>L</span><span>a</span><span>n</span><span>&nbsp;</span><span>Č</span><span>i</span><span>č</span><span>a</span>
+      </div>
+      <p class="lc-tagline">Spletni razvijalec iz Slovenije</p>
+      <div class="lc-stats">
+        <div class="lc-stat lc-stat-1"><div class="lc-stat-val">19</div><div class="lc-stat-lbl">Let</div></div>
+        <div class="lc-stat lc-stat-2"><div class="lc-stat-val" id="lcCount">0</div><div class="lc-stat-lbl">Projektov</div></div>
+        <div class="lc-stat lc-stat-3"><div class="lc-stat-val">100</div><div class="lc-stat-lbl">% Strast</div></div>
+      </div>
+    </div>
+    <div class="lc-scanlines"></div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Nazaj na vrh">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Sound Toggle -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Preklopi zvok">
+    <i class="fa-solid fa-volume-xmark" id="soundIcon"></i>
+  </button>
+
+  <!-- Mobile Sticky CTA -->
+  <a href="#contact" class="mobile-sticky-cta" id="mobileCTA">
+    <i class="fa-solid fa-envelope"></i>
+    <span data-i18n="mobile.cta">Kontakt</span>
+  </a>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Glavna navigacija">
+    <div class="nav-left">
+      <div class="nav-logo">LC<span class="dot">.</span></div>
+      <span class="nav-scroll-pct" id="navScrollPct">0%</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="nav-link" data-i18n="nav.home">Domov</a></li>
+      <li><a href="#about" class="nav-link" data-i18n="nav.about">O meni</a></li>
+      <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Veščine</a></li>
+      <li><a href="#services" class="nav-link" data-i18n="nav.services">Storitve</a></li>
+      <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projekti</a></li>
+      <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Kontakt</a></li>
+    </ul>
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-switch" id="langSwitch" role="button" tabindex="0" aria-label="Preklopi jezik">
+        <span class="lang-option active" data-lang="si">SI</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-option" data-lang="en">EN</span>
+      </div>
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Preklopi temo">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <main id="main-content">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-blobs">
+      <div class="blob blob-1" id="blob1"></div>
+      <div class="blob blob-2" id="blob2"></div>
+      <div class="blob blob-3" id="blob3"></div>
+    </div>
+    <!-- Pulse rings -->
+    <div class="hero-pulse-ring"></div>
+    <div class="hero-pulse-ring"></div>
+    <div class="hero-pulse-ring"></div>
+    <!-- Floating code -->
+    <div class="hero-code-float" style="left:5%;animation-delay:-2s">const dev = 'Lan';</div>
+    <div class="hero-code-float" style="left:20%;animation-delay:-8s">npm run build</div>
+    <div class="hero-code-float" style="left:55%;animation-delay:-14s">git commit -m "✨"</div>
+    <div class="hero-code-float" style="left:75%;animation-delay:-5s">border: 1px solid red;</div>
+    <div class="hero-code-float" style="left:38%;animation-delay:-11s">console.log('hello');</div>
+    <div class="hero-code-float" style="left:85%;animation-delay:-16s">display: flex;</div>
+
+    <!-- Floating decorations -->
+    <div class="hero-floaters">
+      <div class="floater floater-1">&lt;/&gt;</div>
+      <div class="floater floater-2">{ }</div>
+      <div class="floater floater-3"><i class="fa-solid fa-code"></i></div>
+      <div class="floater floater-4">✦</div>
+      <div class="floater floater-5"><i class="fa-solid fa-terminal"></i></div>
+      <div class="floater floater-6">◆</div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-fade" data-i18n="hero.eyebrow">Pozdravljeni, jaz sem</p>
+      <canvas class="particle-canvas" id="particleCanvas"></canvas>
+      <div class="typewriter-wrap">
+        <span class="typewriter-prefix" data-i18n="hero.prefix">Sem </span>
+        <span class="typewriter" id="typewriter"></span>
+        <span class="typewriter-cursor">|</span>
+      </div>
+      <p class="hero-desc reveal-fade" id="heroDesc" data-i18n="hero.desc">
+        Strasten spletni razvijalec, ki gradi impresivne digitalne izkušnje.<br>
+        Vsak piksel šteje. Vsaka animacija govori.
+      </p>
+      <div class="hero-cta reveal-fade">
+        <a href="#projects" class="btn btn-primary magnetic ripple-btn">
+          <span data-i18n="hero.cta1">Poglej moje delo</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-ghost magnetic ripple-btn">
+          <span data-i18n="hero.cta2">Kontaktiraj me</span>
+        </a>
+        <a href="#" class="btn btn-ghost magnetic ripple-btn" download>
+          <i class="fa-solid fa-download"></i>
+          <span data-i18n="hero.cv">Prenesi CV</span>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span data-i18n="hero.scroll">Scrollaj navzdol</span>
+      <i class="fa-solid fa-chevron-down scroll-arrow"></i>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="section-glow section-glow-left"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;O meni /&gt;</span>
+        <h2 class="section-title" data-i18n-html="about.title">Kdo sem <span class="gradient-text animated-gradient">jaz?</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-visual reveal-left">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar-ring ring-2"></div>
+            <div class="avatar-placeholder">
+              <i class="fa-solid fa-user"></i>
+              <div class="avatar-badge" id="avatarBadge" aria-label="Košarkar">
+                <i class="fa-solid fa-basketball"></i>
+                <div class="badge-tooltip" id="badgeTooltip">🏀 Fun fact: igram point guarda!</div>
+              </div>
+            </div>
+            <!-- Rotating text ring -->
+            <svg class="avatar-text-ring" viewBox="0 0 300 300" aria-hidden="true">
+              <defs>
+                <path id="circlePath" d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0"/>
+              </defs>
+              <text>
+                <textPath href="#circlePath">WEB DEVELOPER • DESIGNER • BASKETBALL • CREATOR • </textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="avatar-orbit">
+            <div class="orbit-dot orbit-dot-1"></div>
+            <div class="orbit-dot orbit-dot-2"></div>
+            <div class="orbit-dot orbit-dot-3"></div>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <p class="about-bio" data-i18n-html="about.bio1">
+            Imam <strong>19 let</strong> in sem strasten <strong>spletni razvijalec</strong>, ki naredi vse,
+            da impresionira s svojimi spletnimi stranmi. Poleg programiranja igram <strong>košarko</strong>
+            za zabavo — na igrišču in pred zaslonom vedno dam vse od sebe.
+          </p>
+          <p class="about-bio" data-i18n-html="about.bio2">
+            Verjamem, da je vsaka spletna stran umetniško delo. Kombiniram tehnično znanje
+            z estetskim čutom za dizajn, da ustvarim izkušnje, ki pustijo vtis.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card reveal-scale tilt-card">
+              <div class="stat-glow"></div>
+              <span class="stat-number" data-target="19">0</span>
+              <span class="stat-label" data-i18n="about.stat1">Let</span>
+            </div>
+            <div class="stat-card reveal-scale tilt-card">
+              <div class="stat-glow"></div>
+              <span class="stat-number" data-target="12">0</span>
+              <span class="stat-label" data-i18n="about.stat2">Projektov</span>
+            </div>
+            <div class="stat-card reveal-scale tilt-card">
+              <div class="stat-glow"></div>
+              <span class="stat-number" data-target="100">0</span>
+              <span class="stat-label" data-i18n="about.stat3">% Strast</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE (NEW) ========== -->
+  <section class="experience section" id="experience">
+    <div class="section-glow section-glow-right"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Izkušnje /&gt;</span>
+        <h2 class="section-title" data-i18n-html="exp.title">Moja <span class="gradient-text animated-gradient">pot</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="exp-timeline" id="expTimeline">
+        <div class="exp-line-track">
+          <div class="exp-line-fill" id="expLineFill"></div>
+        </div>
+
+        <div class="exp-item exp-item-left reveal-left stagger-1">
+          <div class="exp-dot pulse-ring"></div>
+          <div class="exp-card glass-card">
+            <span class="exp-year"><i class="fa-solid fa-graduation-cap"></i> 2024 – <span data-i18n="exp.now">Sedaj</span></span>
+            <h4 class="exp-card-title" data-i18n="exp.t1">Študent spletnega razvoja</h4>
+            <p class="exp-card-desc" data-i18n="exp.d1">Samostojno učenje in gradnja projektov vsak dan.</p>
+          </div>
+        </div>
+
+        <div class="exp-item exp-item-right reveal-right stagger-2">
+          <div class="exp-dot pulse-ring"></div>
+          <div class="exp-card glass-card">
+            <span class="exp-year"><i class="fa-solid fa-briefcase"></i> 2023 – 2024</span>
+            <h4 class="exp-card-title" data-i18n="exp.t2">Freelance spletni razvijalec</h4>
+            <p class="exp-card-desc" data-i18n="exp.d2">Oblikovanje in razvoj strani za lokalne stranke.</p>
+          </div>
+        </div>
+
+        <div class="exp-item exp-item-left reveal-left stagger-3">
+          <div class="exp-dot pulse-ring"></div>
+          <div class="exp-card glass-card">
+            <span class="exp-year"><i class="fa-solid fa-basketball"></i> 2020 – <span data-i18n="exp.now2">Sedaj</span></span>
+            <h4 class="exp-card-title" data-i18n="exp.t3">Košarkar</h4>
+            <p class="exp-card-desc" data-i18n="exp.d3">Aktivno igram košarko v lokalnem klubu.</p>
+          </div>
+        </div>
+
+        <div class="exp-item exp-item-right reveal-right stagger-4">
+          <div class="exp-dot pulse-ring"></div>
+          <div class="exp-card glass-card">
+            <span class="exp-year"><i class="fa-solid fa-book"></i> 2021 – 2023</span>
+            <h4 class="exp-card-title" data-i18n="exp.t4">Začetki programiranja</h4>
+            <p class="exp-card-desc" data-i18n="exp.d4">Odkril sem HTML/CSS in se zaljubil v kodo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="skills section" id="skills">
+    <div class="parallax-bg" data-parallax="0.3"></div>
+    <div class="section-glow section-glow-right"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Veščine /&gt;</span>
+        <h2 class="section-title" data-i18n-html="skills.title">Moje <span class="gradient-text animated-gradient">tehnologije</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item reveal-fade stagger-1">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-html5"></i> HTML5</span>
+            <span class="skill-pct">95%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item reveal-fade stagger-2">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item reveal-fade stagger-3">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+        <div class="skill-item reveal-fade stagger-4">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-react"></i> React</span>
+            <span class="skill-pct">65%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+        </div>
+        <div class="skill-item reveal-fade stagger-5">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-brands fa-git-alt"></i> Git</span>
+            <span class="skill-pct">75%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+        </div>
+        <div class="skill-item reveal-fade stagger-6">
+          <div class="skill-header">
+            <span class="skill-name"><i class="fa-solid fa-database"></i> SQL</span>
+            <span class="skill-pct">60%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+        </div>
+      </div>
+      <div class="tech-pills reveal-up">
+        <span class="pill stagger-1">Figma</span>
+        <span class="pill stagger-2">Responsive Design</span>
+        <span class="pill stagger-3">UI/UX</span>
+        <span class="pill stagger-4">REST API</span>
+        <span class="pill stagger-5">Node.js</span>
+        <span class="pill stagger-6">VS Code</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FUN FACTS (NEW) ========== -->
+  <section class="funfacts section" id="funfacts">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Zabavno /&gt;</span>
+        <h2 class="section-title" data-i18n-html="fun.title">Zabavna <span class="gradient-text animated-gradient">dejstva</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="funfacts-grid">
+        <div class="funfact-card glass-card reveal-scale stagger-1 glow-border">
+          <div class="funfact-emoji">☕</div>
+          <div class="funfact-number" data-target-fun="1000">0</div>
+          <div class="funfact-plus">+</div>
+          <p class="funfact-label" data-i18n="fun.f1">Skodelic kave spitih</p>
+        </div>
+        <div class="funfact-card glass-card reveal-scale stagger-2 glow-border">
+          <div class="funfact-emoji">🎧</div>
+          <div class="funfact-value">Lo-fi</div>
+          <p class="funfact-label" data-i18n="fun.f2">Glasba za kodiranje</p>
+        </div>
+        <div class="funfact-card glass-card reveal-scale stagger-3 glow-border">
+          <div class="funfact-emoji">🏀</div>
+          <div class="funfact-value">Point Guard</div>
+          <p class="funfact-label" data-i18n="fun.f3">Moja pozicija na igrišču</p>
+        </div>
+        <div class="funfact-card glass-card reveal-scale stagger-4 glow-border">
+          <div class="funfact-emoji">🌙</div>
+          <div class="funfact-value" data-i18n="fun.v4">Nočna ptica</div>
+          <p class="funfact-label" data-i18n="fun.f4">Najboljša koda nastane ponoči</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services section" id="services">
+    <div class="section-glow section-glow-left"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Storitve /&gt;</span>
+        <h2 class="section-title" data-i18n-html="services.title">Kaj <span class="gradient-text animated-gradient">ponujam</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card glass-card reveal-scale stagger-1 glow-border">
+          <div class="service-shimmer"></div>
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3 class="service-title" data-i18n="svc.t1">Spletni razvoj</h3>
+          <p class="service-desc" data-i18n="svc.d1">Od ideje do delujočega izdelka. Gradim moderne, hitre in responzivne spletne strani s čisto kodo.</p>
+          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card glass-card reveal-scale stagger-2 glow-border">
+          <div class="service-shimmer"></div>
+          <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+          <h3 class="service-title" data-i18n="svc.t2">UI/UX Dizajn</h3>
+          <p class="service-desc" data-i18n="svc.d2">Oblikujem intuitivne vmesnike, ki so vizualno privlačni in enostavni za uporabo. Dizajn, ki govori.</p>
+          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+        <div class="service-card glass-card reveal-scale stagger-3 glow-border">
+          <div class="service-shimmer"></div>
+          <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h3 class="service-title" data-i18n="svc.t3">Optimizacija</h3>
+          <p class="service-desc" data-i18n="svc.d3">Optimiziram hitrost, SEO in dostopnost za najboljšo uporabniško izkušnjo. Vsaka milisekunda šteje.</p>
+          <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="process section" id="process">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Proces /&gt;</span>
+        <h2 class="section-title" data-i18n-html="proc.title">Kako <span class="gradient-text animated-gradient">delam</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline" id="timeline">
+        <svg class="timeline-svg" viewBox="0 0 1000 6" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#a855f7"/>
+              <stop offset="50%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <line class="timeline-track" x1="0" y1="3" x2="1000" y2="3"/>
+          <line class="timeline-path" id="timelinePath" x1="0" y1="3" x2="1000" y2="3" stroke="url(#timelineGrad)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="timeline-steps">
+          <div class="timeline-step reveal-scale stagger-1">
+            <div class="step-number">01</div>
+            <div class="step-icon pulse-ring"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h4 class="step-title" data-i18n="proc.s1">Odkritje</h4>
+            <p class="step-desc" data-i18n="proc.d1">Razumem vaše potrebe, cilje in vizijo projekta.</p>
+          </div>
+          <div class="timeline-step reveal-scale stagger-2">
+            <div class="step-number">02</div>
+            <div class="step-icon pulse-ring"><i class="fa-solid fa-pen-ruler"></i></div>
+            <h4 class="step-title" data-i18n="proc.s2">Dizajn</h4>
+            <p class="step-desc" data-i18n="proc.d2">Oblikujem wireframe in vizualni dizajn vmesnika.</p>
+          </div>
+          <div class="timeline-step reveal-scale stagger-3">
+            <div class="step-number">03</div>
+            <div class="step-icon pulse-ring"><i class="fa-solid fa-laptop-code"></i></div>
+            <h4 class="step-title" data-i18n="proc.s3">Razvoj</h4>
+            <p class="step-desc" data-i18n="proc.d3">Gradim z najnovejšimi tehnologijami in čisto kodo.</p>
+          </div>
+          <div class="timeline-step reveal-scale stagger-4">
+            <div class="step-number">04</div>
+            <div class="step-icon pulse-ring"><i class="fa-solid fa-rocket"></i></div>
+            <h4 class="step-title" data-i18n="proc.s4">Lansiranje</h4>
+            <p class="step-desc" data-i18n="proc.d4">Testiram, optimiziram in lansiram vaš projekt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="projects section" id="projects">
+    <div class="section-glow section-glow-right"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Projekti /&gt;</span>
+        <h2 class="section-title" data-i18n-html="proj.title">Moje <span class="gradient-text animated-gradient">delo</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal-scale stagger-1">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow"></div>
+              <div class="project-icon"><i class="fa-solid fa-shop"></i></div>
+              <h3 class="project-title">E-Commerce Shop</h3>
+              <p class="project-desc" data-i18n="proj.d1">Moderna spletna trgovina z animiranim vmesnikom, košarico in plačilnim sistemom.</p>
+              <div class="project-tags">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+              <div class="flip-hint"><i class="fa-solid fa-rotate"></i> <span data-i18n="proj.hint">Hover za več</span></div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-content">
+                <h3>E-Commerce Shop</h3>
+                <p data-i18n="proj.b1">Responsive dizajn, dark mode, animirani filtri produktov in smooth checkout flow.</p>
+                <a href="#" class="btn btn-primary btn-sm ripple-btn">
+                  <i class="fa-solid fa-external-link"></i> <span data-i18n="proj.view">Oglej si</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card reveal-scale stagger-2">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow"></div>
+              <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h3 class="project-title">Dashboard App</h3>
+              <p class="project-desc" data-i18n="proj.d2">Interaktivni analytics dashboard z real-time grafi in animiranimi statistikami.</p>
+              <div class="project-tags">
+                <span>React</span><span>CSS</span><span>API</span>
+              </div>
+              <div class="flip-hint"><i class="fa-solid fa-rotate"></i> <span data-i18n="proj.hint2">Hover za več</span></div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-content">
+                <h3>Dashboard App</h3>
+                <p data-i18n="proj.b2">Glassmorphism UI, live data charts, dark/light mode, mobilno prilagojeno.</p>
+                <a href="#" class="btn btn-primary btn-sm ripple-btn">
+                  <i class="fa-solid fa-external-link"></i> <span data-i18n="proj.view2">Oglej si</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card reveal-scale stagger-3">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow"></div>
+              <div class="project-icon"><i class="fa-solid fa-basketball"></i></div>
+              <h3 class="project-title">Sports Tracker</h3>
+              <p class="project-desc" data-i18n="proj.d3">Košarkarski statistični tracker z lestvicami, profili in animiranimi grafi.</p>
+              <div class="project-tags">
+                <span>HTML</span><span>JS</span><span>SQL</span>
+              </div>
+              <div class="flip-hint"><i class="fa-solid fa-rotate"></i> <span data-i18n="proj.hint3">Hover za več</span></div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-content">
+                <h3>Sports Tracker</h3>
+                <p data-i18n="proj.b3">Osebni projekt — ker košarka in programiranje sta moji dve strasti.</p>
+                <a href="#" class="btn btn-primary btn-sm ripple-btn">
+                  <i class="fa-solid fa-external-link"></i> <span data-i18n="proj.view3">Oglej si</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card reveal-scale stagger-4">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-glow"></div>
+              <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
+              <h3 class="project-title">Portfolio Stran</h3>
+              <p class="project-desc" data-i18n="proj.d4">Ta spletna stran! Zgrajena z vanilla HTML, CSS & JS. Vključuje 15+ animacij in 0 frameworkov.</p>
+              <div class="project-tags">
+                <span>HTML</span><span>CSS</span><span>JS</span>
+              </div>
+              <div class="flip-hint"><i class="fa-solid fa-rotate"></i> <span data-i18n="proj.hint4">Hover za več</span></div>
+            </div>
+            <div class="card-back">
+              <div class="card-back-content">
+                <h3>Portfolio Stran</h3>
+                <p data-i18n="proj.b4">Čisti vanilla kod, particle system, 3D kartice, typewriter efekt in še veliko več.</p>
+                <a href="#" class="btn btn-primary btn-sm ripple-btn">
+                  <i class="fa-solid fa-external-link"></i> <span data-i18n="proj.view4">Oglej si</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="projects-cta reveal-up">
+        <p data-i18n="proj.more">Želiš videti več?</p>
+        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-ghost magnetic ripple-btn">
+          <i class="fa-brands fa-github"></i>
+          <span data-i18n="proj.github">Poglej GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS (NEW) ========== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Mnenja /&gt;</span>
+        <h2 class="section-title" data-i18n-html="test.title">Kaj pravijo <span class="gradient-text animated-gradient">stranke</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="testimonial-carousel" id="testimonialCarousel">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card glass-card">
+            <i class="fa-solid fa-quote-left testimonial-watermark"></i>
+            <p class="testimonial-text" data-i18n="test.q1">"Lan je naredil odlično spletno stran za moj posel. Hitro, profesionalno in kreativno."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">Marko N.</span>
+                <span class="testimonial-role" data-i18n="test.r1">Podjetnik</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <i class="fa-solid fa-quote-left testimonial-watermark"></i>
+            <p class="testimonial-text" data-i18n="test.q2">"Izjemen občutek za dizajn. Stran izgleda kot bi jo naredila velika agencija."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">Ana K.</span>
+                <span class="testimonial-role" data-i18n="test.r2">Fotografinja</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card glass-card">
+            <i class="fa-solid fa-quote-left testimonial-watermark"></i>
+            <p class="testimonial-text" data-i18n="test.q3">"Odziven, zanesljiv in kreativen. Priporočam vsem!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <span class="testimonial-name">Luka P.</span>
+                <span class="testimonial-role" data-i18n="test.r3">Startup ustanovitelj</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-dots" id="testimonialDots">
+          <button class="t-dot active" data-idx="0" aria-label="Mnenje 1"></button>
+          <button class="t-dot" data-idx="1" aria-label="Mnenje 2"></button>
+          <button class="t-dot" data-idx="2" aria-label="Mnenje 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE ========== -->
+  <section class="marquee-section">
+    <div class="marquee-fade marquee-fade-left"></div>
+    <div class="marquee-fade marquee-fade-right"></div>
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</span>
+        <span class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+        <span class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+        <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+        <span class="marquee-item"><i class="fa-brands fa-node-js"></i> Node.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-figma"></i> Figma</span>
+        <span class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> SQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-paintbrush"></i> UI/UX</span>
+        <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i> Responsive</span>
+        <span class="marquee-item"><i class="fa-solid fa-server"></i> REST API</span>
+        <span class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</span>
+        <span class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+        <span class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+        <span class="marquee-item"><i class="fa-brands fa-react"></i> React</span>
+        <span class="marquee-item"><i class="fa-brands fa-node-js"></i> Node.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-figma"></i> Figma</span>
+        <span class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</span>
+        <span class="marquee-item"><i class="fa-solid fa-database"></i> SQL</span>
+        <span class="marquee-item"><i class="fa-solid fa-paintbrush"></i> UI/UX</span>
+        <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i> Responsive</span>
+        <span class="marquee-item"><i class="fa-solid fa-server"></i> REST API</span>
+        <span class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CURRENTLY (NEW) ========== -->
+  <section class="currently section" id="currently">
+    <div class="container">
+      <div class="currently-content reveal-up">
+        <div class="currently-line">
+          <span class="status-dot"></span>
+          <span data-i18n="cur.learning">Trenutno se učim: <strong>Next.js, TypeScript, Framer Motion</strong></span>
+        </div>
+        <div class="currently-line">
+          <i class="fa-solid fa-location-dot"></i>
+          <span data-i18n="cur.available">Na voljo za freelance projekte od marca 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section" id="contact">
+    <div class="section-glow section-glow-left"></div>
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-tag">&lt;Kontakt /&gt;</span>
+        <h2 class="section-title" data-i18n-html="contact.title">Pišite <span class="gradient-text animated-gradient">mi</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <p class="contact-desc" data-i18n="contact.desc">
+            Imate projekt? Idejo? Ali pa samo želite poklepetati o razvoju spletnih strani?
+            Vedno sem dostopen — odgovorim hitro.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item stagger-1">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <span class="contact-label">Email</span>
+                <span class="contact-value">lan.cica@email.com</span>
+              </div>
+            </div>
+            <div class="contact-item stagger-2">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <span class="contact-label" data-i18n="contact.phone">Telefon</span>
+                <span class="contact-value">+386 XX XXX XXX</span>
+              </div>
+            </div>
+            <div class="contact-item stagger-3">
+              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <span class="contact-label" data-i18n="contact.location">Lokacija</span>
+                <span class="contact-value" data-i18n="contact.loc_val">Slovenija</span>
+              </div>
+            </div>
+            <div class="contact-item stagger-4">
+              <div class="contact-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span class="contact-label">Status</span>
+                <span class="contact-value available" data-i18n="contact.status">Na voljo za projekte</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <!-- Map placeholder -->
+          <div class="map-placeholder reveal-fade">
+            <div class="map-pin"><i class="fa-solid fa-location-dot"></i></div>
+            <span data-i18n="contact.map">📍 Slovenija, EU</span>
+          </div>
+        </div>
+        <form class="contact-form glass-card reveal-right" id="contactForm">
+          <div class="form-group">
+            <input type="text" id="nameInput" class="form-input" placeholder=" " required aria-label="Vaše ime" />
+            <label for="nameInput" class="form-label" data-i18n="contact.f_name">Vaše ime</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="emailInput" class="form-input" placeholder=" " required aria-label="Email naslov" />
+            <label for="emailInput" class="form-label" data-i18n="contact.f_email">Email naslov</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <textarea id="msgInput" class="form-input form-textarea" placeholder=" " required rows="5" aria-label="Vaše sporočilo"></textarea>
+            <label for="msgInput" class="form-label" data-i18n="contact.f_msg">Vaše sporočilo</label>
+            <div class="form-line"></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full ripple-btn">
+            <span data-i18n="contact.send">Pošlji sporočilo</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fa-solid fa-circle-check"></i>
+            <span data-i18n="contact.success">Sporočilo poslano! Kmalu se oglasim.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-blobs">
+      <div class="blob blob-f1"></div>
+    </div>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">LC<span class="dot">.</span></div>
+        <p class="footer-tagline" data-i18n="footer.tagline">Ustvarjam digitalne izkušnje, ki pustijo vtis.</p>
+
+        <!-- Mini sitemap -->
+        <nav class="footer-sitemap" aria-label="Sitemap">
+          <a href="#hero" data-i18n="nav.home">Domov</a>
+          <a href="#about" data-i18n="nav.about">O meni</a>
+          <a href="#skills" data-i18n="nav.skills">Veščine</a>
+          <a href="#services" data-i18n="nav.services">Storitve</a>
+          <a href="#projects" data-i18n="nav.projects">Projekti</a>
+          <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+
+        <!-- Tech stack -->
+        <div class="footer-tech">
+          <span data-i18n="footer.madewith">Narejeno z</span>
+          <span class="tech-icon" title="HTML5"><i class="fa-brands fa-html5"></i></span>
+          <span class="tech-icon" title="CSS3"><i class="fa-brands fa-css3-alt"></i></span>
+          <span class="tech-icon" title="JavaScript"><i class="fa-brands fa-js"></i></span>
+        </div>
+
+        <p class="footer-copy">&copy; 2026 Lan Čiča. <span data-i18n="footer.copy">Narejeno z</span> <span class="heart">&hearts;</span> <span data-i18n="footer.copy2">in veliko kave.</span></p>
+        <a href="#hero" class="footer-top-link" data-i18n="footer.top">↑ Na vrh</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
