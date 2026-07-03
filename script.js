@@ -161,11 +161,11 @@ function applyTranslations(lang) {
   const MIN_DISPLAY = 3500; // ms — enough for the full animation to play
   const start = performance.now();
 
-  // Animate project counter (0 → 12) starting at 2.5s
+  // Animate project counter (0 → 4) starting at 2.5s
   setTimeout(() => {
     const el = document.getElementById('lcCount');
     if (!el) return;
-    const target = 12;
+    const target = 4;
     const duration = 1200;
     const t0 = performance.now();
     const tick = (now) => {
@@ -813,10 +813,10 @@ const counterObserver = new IntersectionObserver((entries) => {
       counterObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.2 });
 
-const aboutSection = document.getElementById('about');
-if (aboutSection) counterObserver.observe(aboutSection);
+const aboutStats = document.querySelector('.about-stats') || document.getElementById('about');
+if (aboutStats) counterObserver.observe(aboutStats);
 
 // Fun facts counter
 const funfactsObserver = new IntersectionObserver((entries) => {
@@ -993,7 +993,7 @@ if (contactForm) {
 /* ============================================================
    TOUCH DETECTION
 ============================================================ */
-const isTouch = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
+function isTouch() { return window.matchMedia('(hover: none), (pointer: coarse)').matches; }
 
 /* ============================================================
    TILT EFFECTS (mouse only)
